@@ -49,15 +49,11 @@ Download the latest Ops Manager from a shared AMI (Amazon Machine Image) on AWS,
 1. Select the acknowledgment checkbox and click **Launch Instances**.
     <%= image_tag 'keypair.png' %>
 
+1. Create a DNS entry for the IP address for your Ops Manager interface. You must use this fully qualified domain name (FQDN) when you log into Ops Manager.
+
 ## <a id='configure-install'></a>Step 2: Configure and Install Ops Manager Director
 
-1. In the AWS Console, navigate to the EC2 Dashboard.
-
-1. Record the **Public IP** of your Ops Manager EC2 instance.
-
-    <%= image_tag("deployed.png") %>
-
-1. Open a browser tab and navigate to the Ops Manager IP address. Proceed through any privacy warnings.
+1. Open a browser tab and navigate to the FQDN of your Ops Manager. Proceed through any privacy warnings.
 
 1. When Ops Manager starts for the first time, you must choose one of the following:
     * <strong>[Use an Identity Provider](#idp)</strong>: If you use an Identity Provider, an external identity server maintains your user database.
