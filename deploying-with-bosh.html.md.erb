@@ -6,7 +6,7 @@ owner: Ops Manager
 
 BOSH is the Cloud Foundry orchestration tool for installing and managing software and virtual machines. A product should install successfully using BOSH before it can be crafted into an Ops Manager tile.
 
-A software product that BOSH installs is called a <i>BOSH release</i>. This topic leads you through the process of deploying an example BOSH release, an [Nginx](http://nginx.org/) webserver that serves a "Hello, World" page, onto Amazon Web Services.
+A <i>BOSH release</i> is a software product packaged for BOSH to install. This topic leads you through the process of deploying an example BOSH release, an [Nginx](http://nginx.org/) webserver that serves a "Hello, World" page, onto Amazon Web Services.
 
 Refer to the [BOSH documentation](https://bosh.io/) for more information about how to create your own BOSH release.
 
@@ -62,7 +62,7 @@ This step uses the BOSH manifest file `bosh.yml` to configure and install a BOSH
   * Elastic IP: See `aws ec2 allocate-address` above.
   * Subnet: In **VPC Dashboard > Subnets**, use the ID listed for the subnet in the VPC associated with ExampleStack.
   * Availability Zone: Use the Availability Zone listed for the subnet above.
-  * Security Group: In **EC2 Dashboard > Security Groups**, use the Group Name for group associated with ExampleStack.
+  * Security Group: In **EC2 Dashboard > Security Groups**, use the Group ID for group associated with ExampleStack.
   * AWS Access Key ID and Secret Access Key: This is stored in the local file `~/.aws/credentials`.
 
 1. Run `bosh-init` with your manifest to deploy your BOSH instance:
@@ -184,7 +184,7 @@ To undo this step, run `bosh deployments`, copy the deployment name, and run `bo
 
 1. `ssh` into your VPC as vcap@BOSH-IP-ADDRESS, using the public Elastic IP address you allocated for BOSH, and confirm:
   <pre class='terminal'>
-    $ ssh vcap@52.8.71.6
+    $ ssh vcap<span>@</span>52.8.71.6
     Are you sure you want to continue connecting (yes/no)? yes
     Ubuntu 14.04.2 LTS
     Welcome to Ubuntu 14.04.2 LTS (GNU/Linux 3.19.0-22-generic x86_64)
@@ -202,5 +202,5 @@ To undo this step, run `bosh deployments`, copy the deployment name, and run `bo
 
 ## <a id='cleanup-vpc'></a>Step 5: Terminate VMs
 
-Use the **EC2 Dashboard** to terminate the webserver and BOSH instances from your VPC before proceeding to [Deploying Your Product as a Tile](./deploying-with-ops-man-tile.html). Leave the NAT instance running. For instructions on how to terminate instances from the **EC2 Dashboard** see the [AWS documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html).
+Use the **EC2 Dashboard** to terminate the webserver and BOSH instances from your VPC before proceeding to [Preparing an Ops Manager Environment](./preparing-ops-man.html). Leave the NAT instance running. For instructions on how to terminate instances from the **EC2 Dashboard** see the [AWS documentation](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/terminating-instances.html).
 
