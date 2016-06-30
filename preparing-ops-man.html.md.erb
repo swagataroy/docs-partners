@@ -52,11 +52,12 @@ Download the latest Ops Manager from a shared AMI (Amazon Machine Image) on AWS,
 
 ## <a id='configure-install'></a>Step 2: Configure and Install Ops Manager Director
 
-1. Open a browser tab and navigate to the FQDN of your Ops Manager. Proceed through any privacy warnings.
+1. In a web browser, navigate to the fully qualified domain name you created in the previous step. 
 
 1. When Ops Manager starts for the first time, you must choose one of the following:
     * <strong>[Use an Identity Provider](#idp)</strong>: If you use an Identity Provider, an external identity server maintains your user database.
     * <strong>[Internal Authentication](#internal)</strong>: If you use Internal Authentication, PCF maintains your user database.
+
     <%= image_tag("select-authentication.png") %>
 
 ### <a id='idp'></a>Use an Identity Provider ###
