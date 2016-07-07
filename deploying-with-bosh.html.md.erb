@@ -46,7 +46,7 @@ First, you must prepare an environment on your IaaS. This procedure prepares an 
   <pre class='terminal'>
     $ aws ec2 allocate-address --domain vpc
     {
-     "PublicIp": "52.8.71.6",
+     "PublicIp": "203.0.113.6",
      "Domain": "vpc",
      "AllocationId": "eipalloc-480ac82d"
     }
@@ -83,7 +83,7 @@ This procedure for manual deployment uses the BOSH manifest `example-release.yml
 
 1. Target your BOSH to the public IP address allocated above, logging in as admin / admin:
   <pre class='terminal'>
-    $ bosh target 52.8.71.6
+    $ bosh target 203.0.113.6
     Target set to `my-bosh'
     Your username: admin
     Enter password: admin
@@ -129,7 +129,7 @@ To undo this step, run `bosh deployments`, copy the stemcell name and version, a
         /Users/d/.bosh_config
       Director
         Name       my-bosh
-        URL        https:/<span>/</span>52.8.71.6:25555
+        URL        https:/<span>/</span>203.0.113.6:25555
         Version    1.3012.0 (00000000)
         User       admin
         UUID       ea1b4d3e-bc26-4e83-b7a0-dd3b08cb7089
@@ -167,7 +167,7 @@ To undo this step, run `bosh deployments`, copy the deployment name, and run `bo
       +--------------+---------+---------------+-------------+
       | Job/index    | State   | Resource Pool | IPs         |
       +--------------+---------+---------------+-------------+
-      | web_server/0 | running | vms           | 192.168.1.7 |
+      | web_server/0 | running | vms           | 192.0.2.7 |
       +--------------+---------+---------------+-------------+
   </pre>
 
@@ -184,7 +184,7 @@ To undo this step, run `bosh deployments`, copy the deployment name, and run `bo
 
 1. `ssh` into your VPC as vcap@BOSH-IP-ADDRESS, using the public Elastic IP address you allocated for BOSH, and confirm:
   <pre class='terminal'>
-    $ ssh vcap<span>@</span>52.8.71.6
+    $ ssh vcap<span>@</span>203.0.113.6
     Are you sure you want to continue connecting (yes/no)? yes
     Ubuntu 14.04.2 LTS
     Welcome to Ubuntu 14.04.2 LTS (GNU/Linux 3.19.0-22-generic x86_64)
@@ -192,7 +192,7 @@ To undo this step, run `bosh deployments`, copy the deployment name, and run `bo
 
 1. `curl` the webserver address returned from `bosh vms` above. If the example product webserver returns its `Hello, World` page, the deployment was successful.
   <pre class='terminal'>
-    $ curl 192.168.1.7
+    $ curl 192.0.2.7
       &lt;html&gt;
        &lt;body&gt;
          &lt;h1&gt;Hello World&lt;/h1&gt;
