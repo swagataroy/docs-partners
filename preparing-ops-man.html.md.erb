@@ -3,15 +3,15 @@ title: Preparing an Ops Manager Environment
 owner: Ops Manager
 ---
 
- <p class='note'><strong>Note</strong>: This topic is part of the [Creating a Pivotal Cloud Foundry® Product Tile](./creating.html) tutorial.  Before beginning this procedure, you should follow the procedure described in [Deploying a Pivotal Cloud Foundry&reg; Product Using BOSH](./deploying-with-bosh.html).</p>
+ <p class='note'><strong>Note</strong>: This topic is part of the [Creating a Pivotal Cloud Foundry® Product Tile](./creating.html) tutorial.  Before beginning this procedure, you should follow the procedure described in [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html).</p>
 
-This topic describes how to deploy the PCF Ops Manager Installation Dashboard and configure Ops Manager Director. Ops Manager uses BOSH to deploy software products in [Pivotal Cloud Foundry&reg;](https://network.pivotal.io/products/pivotal-cf).
+This topic describes how to deploy the PCF Ops Manager Installation Dashboard and configure Ops Manager Director. Ops Manager uses BOSH to deploy software products in [Pivotal Cloud Foundry](https://network.pivotal.io/products/pivotal-cf).
 
 The Ops Manager Installation Dashboard is the interface that hosts Ops Manager Director and other product tiles.
 
 ## <a id='deploy-ops-manager'></a>Step 1: Deploy Ops Manager
 
-Download the latest Ops Manager from a shared AMI (Amazon Machine Image) on AWS, and launch it on the VPC you already created in [Deploying a Pivotal Cloud Foundry&reg; Product Using BOSH](./deploying-with-bosh.html).
+Download the latest Ops Manager from a shared AMI (Amazon Machine Image) on AWS, and launch it on the VPC you already created in [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html).
 
 1. Log in to [Pivotal Network](http://network.pivotal.io), click the **Ops Manager** tile, and download the instructions for deploying Ops Manager on AWS. Open the PDF and record the AMI ID listed for your nearest region. You can ignore the rest of the instructions.
 
@@ -24,9 +24,9 @@ Download the latest Ops Manager from a shared AMI (Amazon Machine Image) on AWS,
 
 1. Choose `m3.large` as the instance type for your Ops Manager VM, and click **Next: Configure Instance Details** at bottom right.
 
-1. Click the **Network** dropdown and choose the VPC for ExampleStack that you created in [Deploying a Pivotal Cloud Foundry&reg; Product Using BOSH](./deploying-with-bosh.html#prep-environment).
+1. Click the **Network** dropdown and choose the VPC for ExampleStack that you created in [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html#prep-environment).
 
-1. Click the **Subnet** dropdown and choose the public subnet that you created in [Deploying a Pivotal Cloud Foundry&reg; Product Using BOSH](./deploying-with-bosh.html#prep-environment).
+1. Click the **Subnet** dropdown and choose the public subnet that you created in [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html#prep-environment).
 
 1. Set **Auto-assign Public IP** to **Enable**.
 <%= image_tag 'vpc.png' %>
@@ -35,24 +35,24 @@ Download the latest Ops Manager from a shared AMI (Amazon Machine Image) on AWS,
 
 1. On the Review Instance Launch page, click **Edit Security Group**.
 
-1. On the Configure Security Group page, click **Select an existing security group** and then select the ExampleStack group created in [Deploying a Pivotal Cloud Foundry&reg; Product Using BOSH](./deploying-with-bosh.html).
+1. On the Configure Security Group page, click **Select an existing security group** and then select the ExampleStack group created in [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html).
     <%= image_tag 'sec-group.png' %>
 
 1. Click **Review and Launch**.
 
 1. On the Review Instance Launch page, click **Launch**.
 
-1. In the key pair drop-down menu, select **ExampleKeyPair**, the key pair you created in [Deploying a Pivotal Cloud Foundry&reg; Product Using BOSH](./deploying-with-bosh.html). 
+1. In the key pair drop-down menu, select **ExampleKeyPair**, the key pair you created in [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html).
 
 1. Select the acknowledgment checkbox and click **Launch Instances**.
     <%= image_tag 'keypair.png' %>
 
-1. Create a DNS entry for the IP address for your Ops Manager interface. You must use this fully qualified domain name (FQDN) when you log into Ops Manager. 
-<p class="note"><strong>Note</strong>: To create a FQDN in AWS, navigate to your hosted zone in the **Route 53** dashboard and create a new `A` record associating a domain to IP address of your Ops Man instance. To find this address in the **EC2 Dashboard** > **Instances** select the `m3.large` instance you created for Ops Manager and record the value for **Public IP**.</p> 
+1. Create a DNS entry for the IP address for your Ops Manager interface. You must use this fully qualified domain name (FQDN) when you log into Ops Manager.
+<p class="note"><strong>Note</strong>: To create a FQDN in AWS, navigate to your hosted zone in the **Route 53** dashboard and create a new `A` record associating a domain to IP address of your Ops Man instance. To find this address in the **EC2 Dashboard** > **Instances** select the `m3.large` instance you created for Ops Manager and record the value for **Public IP**.</p>
 
 ## <a id='configure-install'></a>Step 2: Configure and Install Ops Manager Director
 
-1. In a web browser, navigate to the fully qualified domain name you created in the previous step. 
+1. In a web browser, navigate to the fully qualified domain name you created in the previous step.
 
 1. When Ops Manager starts for the first time, you must choose one of the following:
     * <strong>[Use an Identity Provider](#idp)</strong>: If you use an Identity Provider, an external identity server maintains your user database.
@@ -78,7 +78,7 @@ Download the latest Ops Manager from a shared AMI (Amazon Machine Image) on AWS,
     * Enter a **Username** and **Admin password**.
     * Enter a **Decryption passphrase**. This passphrase encrypts the Ops Manager datastore, and is not recoverable if forgotten.
     * Read the **End User License Agreement**, and select the checkbox to accept the terms.
-    * If you are using an **Http proxy** or **Https proxy**, enter the proxy URL. If specified, Ops Manager will redirect traffic to a designated proxy server. If there are addresses that should not be used to access the proxy, enter them in the **No proxy** field. Pivotal recommends listing the Bosh Director IP address in the **No proxy field**. To find the Bosh Director IP address, navigate to the **EC2 Dashboard** > **Instances**, select the instance named `bosh/0` and record its value for **Private IPs**. 
+    * If you are using an **Http proxy** or **Https proxy**, enter the proxy URL. If specified, Ops Manager will redirect traffic to a designated proxy server. If there are addresses that should not be used to access the proxy, enter them in the **No proxy** field. Pivotal recommends listing the Bosh Director IP address in the **No proxy field**. To find the Bosh Director IP address, navigate to the **EC2 Dashboard** > **Instances**, select the instance named `bosh/0` and record its value for **Private IPs**.
 
     <%= image_tag("om-login.png") %>
 
@@ -94,12 +94,12 @@ Download the latest Ops Manager from a shared AMI (Amazon Machine Image) on AWS,
 1. Select **AWS Config** to open the **AWS Management Console Config** page.
     <%= image_tag 'aws-config.png' %>
 
-1. Complete the following steps with values from [Deploying a Pivotal Cloud Foundry&reg; Product Using BOSH](./deploying-with-bosh.html): 
+1. Complete the following steps with values from [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html):
   * Select **Use AWS Keys** and enter the **Access Key ID** and **AWS Secret Key** from the BOSH manifest `bosh.yml`.
   * From the AWS Console, access your AWS VPC Dashboard and click **Your VPCs** to retrieve your **VPC ID**.
   * **Security Group ID** must match the **Group ID** of the ExampleStack group you created in [Step 1: Deploy Ops Manager](#deploy-ops-manager), located in the **Security Groups** tab of the AWS EC2 Dashboard.
   * Enter `ExampleKeyPair` for **Key Pair Name**.
-  * Open the key pair file `ExampleKeyPair.pem` you created in the [Deploying a Pivotal Cloud Foundry® Product Using BOSH](./deploying-with-bosh.html) topic. Copy the contents of the `.pem` file and paste it into the **SSH Private Key** field. 
+  * Open the key pair file `ExampleKeyPair.pem` you created in the [Deploying a Pivotal Cloud Foundry® Product Using BOSH](./deploying-with-bosh.html) topic. Copy the contents of the `.pem` file and paste it into the **SSH Private Key** field.
   * **Region**: Select `us-west-1`.
   * **Encrypt EBS Volumes**: Select this checkbox to enable full encryption on persistent disks of all BOSH-deployed VMs except the Ops Manager VM and Director VM. See [Configuring Amazon EBS Encryption for PCF on AWS](http://docs.pivotal.io/pivotalcf/customizing/cloudform-om-ebs-config.html) for details on using EBS encryption.
 
@@ -144,11 +144,11 @@ Manager Resurrector functionality and increase Elastic Runtime availability.
 1. Select **Create Networks** to open the **Create Networks** page.
     <%= image_tag("create-networks.png") %>
 1. Select **Enable ICMP checks** to enable ICMP on your networks.
-1. Click **Add Network** and enter the following values, some of which are re-used from the BOSH manifest `example-release.yml`, which originally deployed the app instance you terminated at the end of [Deploying a Pivotal Cloud Foundry&reg; Product Using BOSH](./deploying-with-bosh.html):
+1. Click **Add Network** and enter the following values, some of which are re-used from the BOSH manifest `example-release.yml`, which originally deployed the app instance you terminated at the end of [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html):
     * Enter a unique **Name** for the network.
     * Click **Add Subnet** to create one or more subnets for the network.
     * In the **VPC Subnet ID** field, enter your Subnet ID. From the AWS **VPC Dashboard** click **Subnets** and record the Subnet ID of the subnet associated with your VPC and `ExampleStack`.
-    * For **CIDR**, enter the CIDR listed for your subnet in the AWS VPC Dashboard under **Subnets**. Ops Manager will deploy VMs to this CIDR block. 
+    * For **CIDR**, enter the CIDR listed for your subnet in the AWS VPC Dashboard under **Subnets**. Ops Manager will deploy VMs to this CIDR block.
     * For **Reserved IP Ranges**, enter the range listed as **reserved** under `subnets` in `example-release.yml`. Ops Manager will not deploy VMs to any IP in this range.
     * For **DNS**, enter the `dns` address listed under `subnets` in `example-release.yml`.
     * For **Gateway**, enter the `gateway` address listed under `subnets` in `example-release.yml`.
@@ -174,7 +174,7 @@ Manager Resurrector functionality and increase Elastic Runtime availability.
     <%= image_tag("resource-config-new.png") %>
 1. Adjust any values as necessary for your deployment. Under the **Instances**, **Persistent Disk Type**, and **VM Type** fields, choose **Automatic** from the drop-down menu to allocate the recommended resources for the job. If the **Persistent Disk Type** field reads **None**, the job does not require persistent disk space.
 
-    <p class="note"><strong>Note</strong>: If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, Ops Manager automatically uses the new recommended allocation.</p> 
+    <p class="note"><strong>Note</strong>: If you set a field to <strong>Automatic</strong> and the recommended resource allocation changes in a future version, Ops Manager automatically uses the new recommended allocation.</p>
 
 1. Click the **Installation Dashboard** link to return to the Installation
 Dashboard.
@@ -189,4 +189,4 @@ Dashboard.
 
 <p class="note"><strong>Note</strong>: To redo your Ops Manager Director configuration and deployment, click the gear icon next to <strong>Installation Dashboard</strong>, select <strong>Delete this installation</strong>, confirm, and click <strong>Apply Changes</strong>.</p>
 
-With Ops Manager Director installed, you can proceed to [Deploying Your Product as a Tile in Ops Manager](./deploying-with-ops-man-tile.html). This tutorial topic explains how to download and install a sample product tile to see how it is constructed, and gives references and pointers for constructing your own product tile. 
+With Ops Manager Director installed, you can proceed to [Deploying Your Product as a Tile in Ops Manager](./deploying-with-ops-man-tile.html). This tutorial topic explains how to download and install a sample product tile to see how it is constructed, and gives references and pointers for constructing your own product tile.
