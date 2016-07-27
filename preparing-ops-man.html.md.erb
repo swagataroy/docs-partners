@@ -95,13 +95,13 @@ Download the latest Ops Manager from a shared AMI (Amazon Machine Image) on AWS,
     <%= image_tag 'aws-config.png' %>
 
 1. Complete the following steps with values from [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html):
-  * Select **Use AWS Keys** and enter the **Access Key ID** and **AWS Secret Key** from the BOSH manifest `bosh.yml`.
-  * From the AWS Console, access your AWS VPC Dashboard and click **Your VPCs** to retrieve your **VPC ID**.
-  * **Security Group ID** must match the **Group ID** of the ExampleStack group you created in [Step 1: Deploy Ops Manager](#deploy-ops-manager), located in the **Security Groups** tab of the AWS EC2 Dashboard.
-  * Enter `ExampleKeyPair` for **Key Pair Name**.
-  * Open the key pair file `ExampleKeyPair.pem` you created in the [Deploying a Pivotal Cloud Foundry® Product Using BOSH](./deploying-with-bosh.html) topic. Copy the contents of the `.pem` file and paste it into the **SSH Private Key** field.
-  * **Region**: Select `us-west-1`.
-  * **Encrypt EBS Volumes**: Select this checkbox to enable full encryption on persistent disks of all BOSH-deployed VMs except the Ops Manager VM and Director VM. See [Configuring Amazon EBS Encryption for PCF on AWS](http://docs.pivotal.io/pivotalcf/customizing/cloudform-om-ebs-config.html) for details on using EBS encryption.
+  * Select **Use AWS Keys** or **Use AWS Instance Profile**. To use AWS keys, enter the **Access Key ID** and **AWS Secret Key** from the BOSH manifest `bosh.yml`. To use an AWS instance profile, perform the following steps:
+      * From the AWS Console, access your AWS VPC Dashboard and click **Your VPCs** to retrieve your **VPC ID**.
+      * **Security Group ID** must match the **Group ID** of the ExampleStack group you created in [Step 1: Deploy Ops Manager](#deploy-ops-manager), located in the **Security Groups** tab of the AWS EC2 Dashboard.
+      * Enter `ExampleKeyPair` for **Key Pair Name**.
+      * Open the key pair file `ExampleKeyPair.pem` you created in the [Deploying a Pivotal Cloud Foundry® Product Using BOSH](./deploying-with-bosh.html) topic. Copy the contents of the `.pem` file and paste it into the **SSH Private Key** field.
+      * **Region**: Select `us-west-1`.
+      * **Encrypt EBS Volumes**: Select this checkbox to enable full encryption on persistent disks of all BOSH-deployed VMs except the Ops Manager VM and Director VM. See [Configuring Amazon EBS Encryption for PCF on AWS](http://docs.pivotal.io/pivotalcf/customizing/cloudform-om-ebs-config.html) for details on using EBS encryption.
 
 1. Click **Save**.
 
