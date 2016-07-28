@@ -3,9 +3,9 @@ title: Deploying Your Product as a Tile in Ops Manager
 owner: Ops Manager
 ---
 
- <p class='note'><strong>Note</strong>: This topic is part of the [Creating a Pivotal Cloud Foundry® Product Tile](./creating.html) tutorial.  Before beginning this procedure, you should follow the procedure described in [Deploying a Pivotal Cloud Foundry&reg; Product Using BOSH](./deploying-with-bosh.html).</p>
+ <p class='note'><strong>Note</strong>: This topic is part of the [Creating a Pivotal Cloud Foundry® Product Tile](./creating.html) tutorial.  Before beginning this procedure, you should follow the procedure described in [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html).</p>
 
-This topic describes deploying a Cloud Foundry software product as a tile in [Pivotal Cloud Foundry&reg;](https://network.pivotal.io/products/pivotal-cf) (PCF) Ops Manager. Ops Manager uses BOSH to deploy software products to the cloud, and eases the process by providing the following:
+This topic describes deploying a Cloud Foundry software product as a tile in [Pivotal Cloud Foundry](https://network.pivotal.io/products/pivotal-cf) (PCF) Ops Manager. Ops Manager uses BOSH to deploy software products to the cloud, and eases the process by providing the following:
 
 - Automated error-checking
 - Automated manifest generation
@@ -13,7 +13,7 @@ This topic describes deploying a Cloud Foundry software product as a tile in [Pi
 
 ## <a id='deploy-ops-manager'></a>Step 1: Deploy Ops Manager
 
-Download the latest Ops Manager from a shared AMI (Amazon Machine Image) on AWS, and launch it on the VPC you already created in [Deploying a Pivotal Cloud Foundry&reg; Product Using BOSH](./deploying-with-bosh.html).
+Download the latest Ops Manager from a shared AMI (Amazon Machine Image) on AWS, and launch it on the VPC you already created in [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html).
 
 1. Log in to [Pivotal Network](http://network.pivotal.io), click the **Ops Manager** tile, and download the instructions for deploying Ops Manager on AWS. Open the PDF and record the AMI ID listed for your nearest region. You can ignore the rest of the instructions.
 
@@ -26,9 +26,9 @@ Download the latest Ops Manager from a shared AMI (Amazon Machine Image) on AWS,
 
 1. Choose `m3.large` as the instance type for your Ops Manager VM, and click **Next: Configure Instance Details** at bottom right.
 
-1. Click the **Network** dropdown and choose the VPC for ExampleStack that you created in [Deploying a Pivotal Cloud Foundry&reg; Product Using BOSH](./deploying-with-bosh.html#prep-environment).
+1. Click the **Network** dropdown and choose the VPC for ExampleStack that you created in [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html#prep-environment).
 
-1. Click the **Subnet** dropdown and choose the public subnet that you created in [Deploying a Pivotal Cloud Foundry&reg; Product Using BOSH](./deploying-with-bosh.html#prep-environment).
+1. Click the **Subnet** dropdown and choose the public subnet that you created in [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html#prep-environment).
 
 1. Set **Auto-assign Public IP** to **Enable**.
 <%= image_tag 'vpc.png' %>
@@ -37,14 +37,14 @@ Download the latest Ops Manager from a shared AMI (Amazon Machine Image) on AWS,
 
 1. On the Review Instance Launch page, click **Edit Security Group**.
 
-1. On the Configure Security Group page, click **Select an existing security group** and then select the ExampleStack group created in [Deploying a Pivotal Cloud Foundry&reg; Product Using BOSH](./deploying-with-bosh.html).
+1. On the Configure Security Group page, click **Select an existing security group** and then select the ExampleStack group created in [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html).
 <%= image_tag 'sec-group.png' %>
 
 1. Click **Review and Launch**.
 
 1. On the Review Instance Launch page, click **Launch**.
 
-1. In the key pair popup, choose ExampleKeyPair, the keypair you created in [Deploying a Pivotal Cloud Foundry&reg; Product Using BOSH](./deploying-with-bosh.html). Check the "I acknowledge" checkbox and click **Launch Instances**acknowledgement checkbox.
+1. In the key pair popup, choose ExampleKeyPair, the keypair you created in [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html). Check the "I acknowledge" checkbox and click **Launch Instances**acknowledgement checkbox.
 <%= image_tag 'keypair.png' %>
 
 1. Click **Launch Instance**.
@@ -61,7 +61,7 @@ Download the latest Ops Manager from a shared AMI (Amazon Machine Image) on AWS,
 1. Click the **Ops Manager Director** Tile.<br>
 <%= image_tag 'director.png' %>
 
-1. In the AWS Management Console Config / AWS Config settings, enter values from [Deploying a Pivotal Cloud Foundry&reg; Product Using BOSH](./deploying-with-bosh.html):
+1. In the AWS Management Console Config / AWS Config settings, enter values from [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html):
   * **Access Key ID** in the BOSH manifest `bosh.yml`
   * **AWS Secret Key** in the BOSH manifest `bosh.yml`
   * **VPC ID** from **VPC Dashboard > Your VPCs**
@@ -85,7 +85,7 @@ Download the latest Ops Manager from a shared AMI (Amazon Machine Image) on AWS,
 
 1. Choose the Availability Zone you just created and click **Save**.
 
-1. Select **Create Networks**. Enter the following values, some of which are re-used from the BOSH manifest `example-release.yml`, which originally deployed the app instance you terminated at the end of [Deploying a Pivotal Cloud Foundry&reg; Product Using BOSH](./deploying-with-bosh.html):
+1. Select **Create Networks**. Enter the following values, some of which are re-used from the BOSH manifest `example-release.yml`, which originally deployed the app instance you terminated at the end of [Deploying a Pivotal Cloud Foundry Product Using BOSH](./deploying-with-bosh.html):
   * **Name** can be anything
   * **VPC Subnet ID** from **VPC Dashboard > Subnets**, or in the BOSH manifest `bosh.yml`
   * **Subnet (CIDR Range)** is the CIDR listed for your subnet under **VPC Dashboard > Subnets**
