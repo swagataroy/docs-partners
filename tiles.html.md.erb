@@ -5,13 +5,13 @@ owner: London Services
 
 ## <a id='basics'></a>Tile Basics
 
-Product tiles make it easy for cloud operators to offer new and upgraded software services to developers in a Pivotal Cloud Foundry (PCF) deployment. [Pivotal Network](https://network.pivotal.io) distributes tiles as zipped code directories, and this topic describes the format that these directories follow. To create a tile, you create a directory following this format, and include Bosh releases that instantiat your service within PCF.
+Product tiles make it easy for cloud operators to offer new and upgraded software services to developers in a Pivotal Cloud Foundry (PCF) deployment. [Pivotal Network](https://network.pivotal.io) distributes tiles as zipped code directories, and this topic describes the format that these directories follow. To create a tile, you create a directory following this format, and include Bosh releases that instantiate your service within PCF.
 
 The PCF tile format ensures that tiles install and upgrade easily, have a PCF-friendly configuration interface, run pre- and post-deploy errands, generate credentials, publish a catalog of available services to the **Services Marketplace**, and perform other under-the-hood functions that streamline service deployment and use.
 
 ### <a id='file-structure'></a>File Structure
 
-The file structure of a .pivotal resembles the following:
+You create a `.pivotal` file from a directory structured like this:
 
 ```
 .
@@ -35,7 +35,7 @@ The three required top-level subdirectories in a `.pivotal` tile directory are:
 
 ### <a id='dot-pivotal'></a>Building the .pivotal file
 
-A `.pivotal` is simply a zip file. Therefore to build a `.pivotal`, you can use any zip utility. Ensure that the top-level folders as seen above in the `example-product` folder remain.
+A `.pivotal` file is simply a gzipped tarfile of the tile directory with the `.tgz` extension renamed to `.pivotal`. You can use any zip utility to create a `.pivotal` file. Ensure that the top-level subfolders as seen above in the `example-product` folder remain.
 
 #### Example workflow
 
@@ -59,7 +59,7 @@ Archive:  example-product.pivotal
 
 ### <a id='bosh'></a>Relationship to Bosh Releases
 
-Tiles serve as wrappers for Bosh releases, and if your product has different numbered releases, you can package multiple Bosh releases within a single tile. To build a tile, you need to know how Bosh releases themselves are constructed, and how tiles are constructed to include Bosh releases.
+Tiles serve as wrappers for Bosh releases and perform additional functions like managing configuration and upgrades in the Ops Manager Installation Dashboard. To build a tile, you need to know how Bosh releases are structured, and how tiles are constructed to include Bosh releases. If your product has different numbered releases, you can package multiple Bosh releases within a single tile. 
 
 ### <a id='template-ref'></a>Product Template Reference
 
