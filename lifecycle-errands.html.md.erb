@@ -5,13 +5,19 @@ owner: Ops Manager
 
 Lifecycle errands are BOSH Errands (scripts) that run at the beginning and end of an installed product's availability time. Product teams create errands as part of a product package, and a product can only run errands it includes. Refer to [BOSH documentation](https://bosh.io/) for more information about BOSH Errands
 
-Products can have two kinds of lifecycle errands. <i>Post-install</i> errands run after a product installs but before Ops Manager displays makes it available for use. <i>Pre-delete</i> errands run after an operator chooses to delete a product, but before Ops Manager finishes removing it from use. Post-install errands can be skipped during product installation, but pre-delete errands run always.
+Products can have two kinds of lifecycle errands. Post-install errands run after a product installs but before Ops Manager displays makes it available for use. Pre-delete errands run after an operator chooses to delete a product, but before Ops Manager finishes removing it from use. 
+
+Under **Pending Changes**, the Ops Manager Installation Dashboard displays a list of both post-install and pre-delete errands.
+
+<%= image_tag("pending_changes.png") %>
+
+ Operators can deselect any errands they do not want to run before clicking **Apply Changes**.
 
 ##<a id='post-install'></a>Post-Install Errands
 
 Post-install errands run after a product installs, but before Ops Manager makes it available for use. Typical post-install errands include smoke or acceptance tests, database initialization or database migration, and service broker registration.
 
-Most post-install errands run by default, but an operator can prevent a post-install errand from running by deselecting its checkbox on the product tile's **Settings** tab before installing the product.
+Most post-install errands run by default, but an operator can prevent a post-install errand from running by deselecting its checkbox under **Pending Changes** in the Ops Manager Installation Dashboard, or on the product tile's **Settings** tab, before installing the product.
 
 <%= image_tag("example-errand.png") %>
 
@@ -21,7 +27,7 @@ If an operator deselects the checkbox for Elastic Runtime's **Broker Registrar**
 
 ##<a id='pre-delete'></a>Pre-Delete Errands
 
-Pre-delete errands run after an operator chooses to delete a product, but before Ops Manager actually finishes deleting it. Ops Manager does not display pre-delete errands, and an operator cannot prevent them from running.
+Pre-delete errands run after an operator chooses to delete a product, but before Ops Manager actually finishes deleting it. An operator can prevent a pre-delete errand from running by deselecting its checkbox under **Pending Changes** in the Ops Manager Installation Dashboard.
 
 Typical pre-delete errands include clean up of application artifacts and service
 broker de-registration. For example, Pivotal MySQL has a **Broker Deregistrar** pre-delete errand that:
@@ -32,5 +38,4 @@ broker de-registration. For example, Pivotal MySQL has a **Broker Deregistrar** 
 * Deletes the service broker from the Cloud Controller
 
 When an operator chooses to delete the Pivotal MySQL product, Ops Manager first
-runs the **Broker Deregistrar** pre-delete errand, then deletes the product. An operator cannot prevent this errand from running when Pivotal MySQL is
-deleted.
+runs the **Broker Deregistrar** pre-delete errand, then deletes the product. 

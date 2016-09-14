@@ -1,9 +1,9 @@
 ---
-title: Tutorial&#58; Creating a Pivotal Cloud Foundry&reg; Product Tile
+title: Tutorial&#58; Creating a Pivotal Cloud Foundry Product Tile
 owner: Ops Manager
 ---
 
-Software products available for [Pivotal Cloud Foundry&reg;](https://network.pivotal.io/products/pivotal-cf) (PCF)
+Software products available for [Pivotal Cloud Foundry](https://network.pivotal.io/products/pivotal-cf) (PCF)
 appear in the Ops Manager Installation Dashboard as clickable tiles.
 
 <%= image_tag 'tiles.png' %>
@@ -16,6 +16,8 @@ To complete this tutorial, you need:
 
 - An [Amazon Web Services](http://aws.amazon.com) (AWS) account with Virtual Private Cloud (VPC). You can create a tile on any PCF infrastructure, but AWS is readily accessible for anyone who wants to work through this tutorial.
 
+- A user account defined in your AWS **IAM Dashboard** with **AdministratorAccess** permissions policy attached.
+
 - The [AWS Command Line Interface](https://aws.amazon.com/cli/) (CLI) installed on your machine. You can confirm this by running `aws help`.
 
 <p class='note'><strong>Note</strong>: If you have trouble installing the AWS CLI on Linux, OS X, or Unix using pip or the bundled installer, as described the AWS CLI [User Guide](http://docs.aws.amazon.com/cli/latest/userguide/installing.html), try installing the awscli package using [Homebrew](http://brew.sh/).
@@ -27,11 +29,14 @@ To complete this tutorial, you need:
 ## <a id='procs'></a>Overview: BOSH and Ops Manager
 Ops Manager is a graphical front-end to BOSH. When you use Ops Manager to deploy a software product, Ops Manager directs BOSH to run the deployment on the back end.
 
-Because Ops Manager adds an additional layer of complexity to the deployment process, tile authors should first confirm that their product deploys successfully with BOSH alone. Once their BOSH deployment works, the authors can then add the necessary pieces to turn their product into a click-deployable tile for Ops Manager. This tutorial follows these two steps:
+Because Ops Manager adds an additional layer of complexity to the deployment process, tile authors should first confirm that their product deploys successfully with BOSH alone. Once their BOSH deployment works, the authors can then create an Ops Manager environment and then add the necessary pieces to turn their product into a click-deployable tile. This tutorial follows these three steps:
 
-1. [Deploying A PCF Product Using BOSH](./deploying-with-bosh.html) describes how to deploy a software product with BOSH, step by step, using a simple example.
+1. [Deploying a PCF Product Using BOSH](./deploying-with-bosh.html) describes how to deploy a software product with BOSH, step by step, using a simple example.
 
-1. [Deploying Your Product as a Tile in Ops Manager](./deploying-with-ops-man-tile.html) explains how to package your product into a tile that deploys through Ops Manager.
+1. [Preparing an Ops Manager Environment](./preparing-ops-man.html) describes how to deploy the PCF Ops Manager Installation Dashboard and configure Ops Manager Director.
+The Ops Manager Installation Dashboard is the interface that hosts Ops Manager Director and other product tiles.
+
+1. [Deploying Your Product as a Tile in Ops Manager](./deploying-with-ops-man-tile.html) explains how to package your product into a tile that you deploys in the Ops Manager Installation Dashboard.
 
 ## <a id='ref-docs'></a>Reference Documentation
 
