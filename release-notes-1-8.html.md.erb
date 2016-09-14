@@ -1,0 +1,72 @@
+---
+title: Pivotal Cloud Foundry v1.8 Partners Release Notice
+owner: Technical Program Management
+---
+
+<p class="note"><strong>Note</strong>: In September 2016, prior to the release of Pivotal Cloud Foundry (PCF) 1.8, a version of this notice was emailed to PCF partners.</p>
+
+## <a id='tldr'></a>What’s the TL;DR?
+
+PCF v1.8 latest release candidates (RCs) for OpsManager and Elastic Runtime (OM RC4 and ERT RC7) have been released. You should have access now.
+
+We’d also like to remind you about the importance of metadata versioning and having compatible versions of your tile with the different PCF versions.
+
+Lastly, our IPsec add-on is now supported on ERT and our internal service tiles.
+To ensure that your service works with IPsec, you should test and verify. For more information, see [Should I test that my tile supports the IPsec add-on](#test-tile-ipsec) below.
+
+## <a id='where'></a>Where are we with PCF v1.8?
+
+If you haven't done so already with earlier RCs, use your tiles with the current RCs and fix any issues you find.
+We expect these latest RCs to be our GA candidates.
+To ensure that your tile works with PCF v1.8, please check for three specific things:
+
+* Most critically, we removed the double-paren az-accessor in Ops Manager.
+For more information, see 
+[Changes in Ops Manager v1.8.0 for Tile Authors](http://docs-pcf-staging.cfapps.io/pivotalcf/1-8/pcf-release-notes/p1-v1.8/opsmanager_rn_1_8.html#tileauthorchanges) in the _Pivotal Cloud Foundry Ops Manager v1.8 Release Notes_.
+
+* The second issue is an inconsistency in how the selector may be set.
+It's unlikely that this inconsistency will affect you, but you should double-check your tile for this usage.
+For more information about how tiles use the `selector` property, see [Selector](./tiles.html#selector) in the _About PCF Tiles_ topic.
+
+* Lastly, to make sure your tile takes advantage of all the benefits of PCF v1.8, change its `metadata_version` property to `v1.8`.
+Changing the version number can unlock new properties and also break properties that changed from previous versions.
+For more information, see the [Product Template Reference](./product-template-reference.html#metadata) topic.
+
+For general information about the PCF v1.8 release, see the [Pivotal Cloud Foundry Release Notes](http://docs-pcf-staging.cfapps.io/pivotalcf/1-8/pcf-release-notes/).
+
+As part of our latest release process, we reviewed our documentation for tile authors and made some changes.
+With the v1.8 release, we now have an [About PCF Tiles](./tiles.html) topic that we’ll keep up-to-date with the changes in Ops Manager that affect tile authors.
+In addition, we now let partners access our documentation staging area so that they can preview changes directly and provide feedback.
+You can see the details, including some code snippet examples on the [Changes in Ops Manager v1.8.0 for Tile Authors](http://docs-pcf-staging.cfapps.io/pivotalcf/1-8/pcf-release-notes/p1-v1.8/opsmanager_rn_1_8.html#tileauthorchanges) section of the Ops Manager Release notes.
+
+## <a id='test-tile-ipsec'></a> Should I test that my tile supports the IPsec add-on?
+
+As of PCF v1.8, we certify that all of our internal service tiles (except RabbitMQ,
+though that will be remedied soon) work with our IPsec add-on to provide a better security experience for our customers. 
+
+Services that support Transport Layer Security (TLS) do not necessarily need to support IPsec.
+This is a question of addressable market.  
+
+Operators may choose to deploy services to a non-IPsec subnet.
+However, based on any individual customer’s unique constraints or policy preferences,
+services may also be expected to be deployable to the same subnet as ERT,
+and the IPsec add-on may be present there for the benefit it brings to the ERT.
+In this case, your service may be expected to operate in an IPsec environment.
+By testing that your service operates in a deployment where IPsec is present,
+you ensure the maximum compatibility with potential customer deployment choices.  
+
+Here are three configurations to test with your service:
+
+<table class='nice'>
+  <tr><th>ERT Subnet</th><th>Services Subnet</th></tr>
+  <tr><td>Uses IPsec</td> <td>Does not use IPsec</td></tr>
+  <tr><td>Uses IPsec</td> <td>Uses IPsec</td></tr>
+  <tr><td>Uses IPsec</td> <td>Shares the same subnet as ERT (which uses IPsec)</td></tr>
+</table>
+
+Reach out to your Pivotal contact for help with any questions or issues with PCF v1.8.
+
+<hr>
+
+[Pivotal Cloud Foundry 1.7 Partners Release Notice](./release-notes.html)
+
