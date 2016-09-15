@@ -5,16 +5,14 @@ owner: Technical Program Management
 
 <p class="note"><strong>Note</strong>: In September 2016, prior to the release of Pivotal Cloud Foundry (PCF) 1.8, a version of this notice was emailed to PCF partners.</p>
 
-## <a id='tldr'></a>What’s the TL;DR?
-
-PCF v1.8 latest release candidates (RCs) for OpsManager and Elastic Runtime (OM RC4 and ERT RC7) have been released. You should have access now.
+PCF v1.8 latest release candidates (RCs) for Ops Manager and Elastic Runtime (OM RC4 and ERT RC7) have been released. You should have access now.
 
 We’d also like to remind you about the importance of metadata versioning and having compatible versions of your tile with the different PCF versions.
 
 Lastly, our IPsec add-on is now supported on ERT and our internal service tiles.
-To ensure that your service works with IPsec, you should test and verify. For more information, see [Should I test that my tile supports the IPsec add-on](#test-tile-ipsec) below.
+To ensure that your service works with IPsec, you should test and verify. For more information, see [Supporting the IPsec Add-on](#ipsec) below.
 
-## <a id='where'></a>Where are we with PCF v1.8?
+## <a id='where'></a> Test Your Tile on PCF v1.8
 
 If you haven't done so already with earlier RCs, use your tiles with the current RCs and fix any issues you find.
 We expect these latest RCs to be our GA candidates.
@@ -39,7 +37,7 @@ With the v1.8 release, we now have an [About PCF Tiles](./tiles.html) topic that
 In addition, we now let partners access our documentation staging area so that they can preview changes directly and provide feedback.
 You can see the details, including some code snippet examples on the [Changes in Ops Manager v1.8.0 for Tile Authors](http://docs-pcf-staging.cfapps.io/pivotalcf/1-8/pcf-release-notes/p1-v1.8/opsmanager_rn_1_8.html#tileauthorchanges) section of the Ops Manager Release notes.
 
-## <a id='test-tile-ipsec'></a> Should I test that my tile supports the IPsec add-on?
+## <a id='ipsec'></a> Supporting the IPsec Add-on
 
 As of PCF v1.8, we certify that all of our internal service tiles (except RabbitMQ,
 though that will be remedied soon) work with our IPsec add-on to provide a better security experience for our customers. 
