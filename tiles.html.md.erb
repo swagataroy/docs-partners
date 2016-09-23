@@ -5,7 +5,7 @@ owner: London Services
 
 ## <a id='basics'></a>Tile Basics
 
-Product tiles make it easy for cloud operators to offer new and upgraded software services to developers in a Pivotal Cloud Foundry (PCF) deployment. [Pivotal Network](https://network.pivotal.io) distributes tiles as zipped code directories, and this topic describes the format that these directories follow. To create a tile, you create a directory following this format, and include Bosh releases that instantiate your service within PCF.
+Product tiles make it easy for cloud operators to offer new and upgraded software services to developers in a Pivotal Cloud Foundry (PCF) deployment. [Pivotal Network](https://network.pivotal.io) distributes tiles as zipped code directories, and this topic describes the format that these directories follow. To create a tile, you create a directory following this format, and include BOSH releases that instantiate your service within PCF.
 
 The PCF tile format ensures that tiles install and upgrade easily, have a PCF-friendly configuration interface, run pre- and post-deploy errands, generate credentials, publish a catalog of available services to the **Services Marketplace**, and perform other under-the-hood functions that streamline service deployment and use.
 
@@ -31,7 +31,7 @@ The three required top-level subdirectories in a `.pivotal` tile directory are:
 
 * `metadata` - high-level information for configuring and publishing your service.
 * `migrations` - rules that govern tile upgrades.
-* `releases` - the bosh releases that deploy your service.
+* `releases` - the BOSH releases that deploy your service.
 
 ### <a id='dot-pivotal'></a>Building the .pivotal file
 
@@ -57,9 +57,9 @@ Archive:  example-product.pivotal
         0  07-12-16 17:19   releases/example-release-18.tgz
 </pre>
 
-### <a id='bosh'></a>Relationship to Bosh Releases
+### <a id='bosh'></a>Relationship to BOSH Releases
 
-Tiles serve as wrappers for Bosh releases and perform additional functions like managing configuration and upgrades in the Ops Manager Installation Dashboard. To build a tile, you need to know how Bosh releases are structured, and how tiles are constructed to include Bosh releases. If your product has different numbered releases, you can package multiple Bosh releases within a single tile. 
+Tiles serve as wrappers for BOSH releases and perform additional functions like managing configuration and upgrades in the Ops Manager Installation Dashboard. To build a tile, you need to know how BOSH releases are structured, and how tiles are constructed to include BOSH releases. If your product has different numbered releases, you can package multiple BOSH releases within a single tile. 
 
 ### <a id='template-ref'></a>Product Template Reference
 
@@ -73,7 +73,7 @@ The product template includes the following sections:
 
 ## <a id='expressions'></a>Double-Paren Expressions
 
-A tile's configuration interface is defined in a `.yml` file in the tile's `metadata` subdirectory. Within a `.yml` file, you can use double parentheses to enclose deployment manifest snippets, and Ops Manager will pass these snippets to Bosh, to incorporate into the manifest that Bosh uses to deploy instances of the tile service. These double-paren expressions are how Ops Manager sends tile configuration information to Bosh, and how you should write these expressions depends on what type of information you want to retrieve.
+A tile's configuration interface is defined in a `.yml` file in the tile's `metadata` subdirectory. Within a `.yml` file, you can use double parentheses to enclose deployment manifest snippets, and Ops Manager will pass these snippets to BOSH, to incorporate into the manifest that BOSH uses to deploy instances of the tile service. These double-paren expressions are how Ops Manager sends tile configuration information to BOSH, and how you should write these expressions depends on what type of information you want to retrieve.
 
 ### <a id=''></a>Referencing Properties
 
@@ -143,7 +143,7 @@ Outside of properties, you can also retrieve information about various configura
 
 <table class="nice"><tr>
   <td>deployment_ip</td>
-  <td>Provides the IP address that the Bosh Director is deployed on</td>
+  <td>Provides the IP address that the BOSH Director is deployed on</td>
   </tr><tr>
   <td>username</td>
   <td>Provides the username for the Director VM</td>
@@ -161,10 +161,10 @@ Outside of properties, you can also retrieve information about various configura
 
 <table class="nice"><tr>
   <td>uaa_client_name</td>
-  <td>Provides the UAA client name created for your Product to communicate with the Bosh Director</td>
+  <td>Provides the UAA client name created for your Product to communicate with the BOSH Director</td>
   </tr><tr>
   <td>uaa_client_secret</td>
-  <td>Provides the UAA client secret created for your Product to communicate with the Bosh Director</td>
+  <td>Provides the UAA client secret created for your Product to communicate with the BOSH Director</td>
   </tr><tr>
   <td>service_network</td>
   <td>Provides the name of the service network that has been assigned to your product</td>
