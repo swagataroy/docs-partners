@@ -376,7 +376,7 @@ The selector and collections inputs are referenced by their selector and collect
 
 The following is an example of the job_types section that appear in a product template. This section defines the jobs that end up in a BOSH Manifest. Those jobs are defined in your BOSH Release. Jobs require many different settings in order to function properly, and that is the crux of what Ops Manager does for you: it asks a user for values to those settings, and generates a manifest based on what was entered.
 
-Ops Manager 1.7 does not require product authors to provide `vm_credentials` in the `property_blueprints` for each `job_type`. `vm_credentials` are generated automatically, and you can find them in the release manifest. 
+Ops Manager does not require product authors to provide `vm_credentials` in the `property_blueprints` for each `job_type`. `vm_credentials` are generated automatically, and you can find them in the release manifest. 
 
 ```
 job_types:

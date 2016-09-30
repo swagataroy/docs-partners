@@ -5,7 +5,7 @@ owner: Ops Manager
 
 This topic discusses product tile migrations, which refers to changing the name and values of properties when a customer upgrades tile versions. Tile authors supply a JavaScript file to trigger chaining migrations. Chaining migrations allows for multiple migrations to run sequentially.   
 
-<p class="note"><strong>Note</strong>: In order to use JS migrations, ensure you are using Ops Manager 1.7 or higher.</p>
+<p class="note"><strong>Note</strong>: In order to use JS migrations, ensure you are using Ops Manager 1.7 or later.</p>
 
 ## <a id='import'></a>Update Values or Property Names Using JavaScript##
 
@@ -211,7 +211,7 @@ Refer to the example properties below when writing your own tile migration JS fi
 </pre>
 
 
- <p class="note"><strong>Note</strong>: If your product uses Ops Manager 1.6 or earlier metadata, you need to write a transmogrifier content migration for customers using your product on 1.6, and a JavaScript migration for those on Ops Manager 1.7. Review the transmogrifier example in the <a href="https://github.com/pivotal-cf-experimental/ops-manager-example/releases/tag/tutorial-v1">Tile Tutorial V1</a>.</p>
+ <p class="note"><strong>Note</strong>: If your product uses Ops Manager 1.6 or earlier metadata, you need to write a transmogrifier content migration for customers using your product on 1.6, and a JavaScript migration for those on Ops Manager 1.7 or later. Review the transmogrifier example in the <a href="https://github.com/pivotal-cf-experimental/ops-manager-example/releases/tag/tutorial-v1">Tile Tutorial V1</a>.</p>
 
 ## <a id='import'></a>Examples Demonstrating Chaining Migrations ##
 
